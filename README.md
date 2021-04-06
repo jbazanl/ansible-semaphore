@@ -1,1 +1,1 @@
-# ansible-semaphore
+# git-ansible-semaphore
