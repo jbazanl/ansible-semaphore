@@ -1,0 +1,13 @@
+---
+- name: "Simple Playbook - Test"
+  hosts: production
+  
+  tasks:
+    - name: Reemplaza Clave
+      args:
+        warn: false
+      shell: |
+        sed -i -e "s/'CUENTA_ADMIN_PORTAL', 'AKIAJFXTK37GN2KSLJXQ'/'CUENTA_ADMIN_PORTAL', 'AKIAXXDIJ43DARA5ASW7'/g" \
+          -e ";s/'CLAVE_ADMIN_PORTAL', 'Al7D+5m5kyH29d2V7GSRWjZjbqltQdY4xMbm4OI3E7kP'/'CLAVE_ADMIN_PORTAL', 'BBcWz7hSnmUGBLnDIvkqu+tsN7XzTmWfzwY758ZgAGiw'/g" \
+          {{ item|quote }}
+      with_items: "{{ files }}"
