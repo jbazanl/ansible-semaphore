@@ -1,0 +1,18 @@
+---
+- name: "Simple Playbook - Test"
+  hosts: production
+  
+  tasks:
+    - name: Check status APACHE
+      args:
+        warn: false
+      shell: apachectl fullstatus
+      #shell: /etc/init.d/apache2 status
+      #with_items: "{{ files }}"
+      register: res_http
+
+    - name: Muestra resultados
+      debug:
+        msg: '{{ res_http.stdout }}'
+
+
